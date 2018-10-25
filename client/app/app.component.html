@@ -1,0 +1,38 @@
+<div class="container">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <button class="navbar-toggler" type="button"
+            data-toggle="collapse" data-target="#navbar-supported-content"
+            aria-controls="navbar-supported-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar-supported-content">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+            <i class="fa fa-home"></i> Home
+          </a>
+        </li> 
+        <li class="nav-item">
+          <a routerLink="/ads" class="nav-link" routerLinkActive="active">
+            <i class="fa fa-list"></i> Ads
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/customer" class="nav-link" routerLinkActive="active">
+            <i class="fa fa-list"></i> Customer
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/checkout" class="nav-link" routerLinkActive="active">
+            <i class="fa fa-list"></i> Checkout
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+
+  <router-outlet></router-outlet>
+
+</div>

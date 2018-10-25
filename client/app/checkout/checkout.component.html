@@ -1,0 +1,59 @@
+<div>
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="col-md-4 text-right d-inline-block">Select a customer</div>
+          <div class="col-md-4 d-inline-block">
+            <select #sel (change)="changeCust(sel.value)" class="form-control" id="sel1">
+              <option> </option>
+              <option *ngFor="let c of customers" [value]="c._id">{{c.name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card  " *ngIf="selectedCust">
+    <div class="card-body">
+      <form class="form-inline" [formGroup]="checkOutForm" (ngSubmit)="checkOut()">
+
+        <span class="col-md-12 text-center mb-2">You selected <h5>{{selectedCust.name}}</h5></span>
+
+        
+        <div class="jumbotron jumbotron-fluid col-md-12 p-2" *ngIf="selectedCust.rules&&selectedCust.rules.length>0">
+         <span class="lead mb-2"><h3>Deals of Privileged customer</h3></span> <ul>
+            <li *ngFor="let rule of selectedCust.rules">{{getRuleAsString(rule)}} </li>
+          </ul>
+        </div>
+        
+        <p class="col-md-12 mb-2">Enter number of ads per type</p>
+
+        <div class="form-group col-md-3  d-inline-block">
+          <label for="premium" class="col-sm-6 col-form-label d-inline-block text-right">Premium</label>
+          <div class="col-sm-6  d-inline-block">
+            <input type="number" formControlName="Premium" class="form-control w-100" min="0" required id="premium">
+          </div>
+        </div>
+        <div class="form-group  col-md-3 d-inline-block">
+          <label for="standOut" class="col-sm-6 col-form-label d-inline-block text-right">Standout</label>
+          <div class="col-sm-6 d-inline-block">
+            <input type="number" formControlName="Standout" class="form-control w-100" min="0" placeholder="number" id="standOut">
+          </div>
+        </div>
+        <div class="form-group  col-md-3 d-inline-block">
+          <label for="classic" class="col-sm-6 col-form-label d-inline-block text-right">Classic</label>
+          <div class="col-sm-6 d-inline-block">
+            <input type="number" formControlName="Classic" class="form-control w-100" id="classic">
+          </div>
+        </div>
+        <div class="form-group  col-md-3 d-inline-block text-center">
+          <button class="btn btn-primary" type="submit"> Checkout </button>
+        </div>
+        <div class=" col-md-12 text-center mt-5">
+          <h4 *ngIf="total>0">Total cost : ${{total}}</h4>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
